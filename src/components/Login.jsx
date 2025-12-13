@@ -1,0 +1,81 @@
+import React, { useState, useRef } from 'react';
+import Header from './Header';
+import { checkValidData } from '../utills/validate';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../utills/firebase';
+
+
+const Login = () => {
+
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null)
+
+  const email = useRef(null);
+  const password = useRef(null)
+
+  const handleButtonClick = () =>{
+
+   const message = checkValidData(email.current.value, password.current.value)
+  
+   setErrorMessage(message);
+   if(message) return;
+
+
+  //  Sign In/Sign Up logic
+
+  if(!isSignInForm){
+      // Sign Up
+    createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode + "-" + errorMessage);
+  });
+  }
+  else{
+      // Sign In Logic
+    signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode + "-" + errorMessage);
+  });
+  }
+   
+
+  }
+
+  const toggleSignInForm = () =>{
+    setIsSignInForm(!isSignInForm);
+  }
+
+  return (
+    <div>
+      <Header />  
+      <div className='absolute'>
+        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/274d310a-9543-4b32-87f3-147b372abc00/web/IN-en-20251201-TRIFECTA-perspective_baf6d3bc-eece-4a63-bcbb-e0a2f5d9d9ec_large.jpg" alt="" />
+      </div> 
+      <form onSubmit={(e) => e.preventDefault()} className="w-3/12 absolute my-30 p-10 left-0 right-0 mx-auto bg-black opacity-80 text-white">
+        <h1 className='py-2 font-bold text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
+        {!isSignInForm && <input type="text" placeholder="Full Name" className="p-3 my-3 w-full bg-gray-600 rounded-sm"/>}
+        <input ref={email} type="text" placeholder="Email Address" className="p-3 my-3 w-full bg-gray-600 rounded-sm" />
+        <input ref={password} type="password" placeholder="Password" className="p-3 my-3 w-full bg-gray-600 rounded-sm"/>
+        <p className="text-red-500 font-bold py-2">{errorMessage}</p>
+        <button className="p-2 my-3 w-full bg-red-600 rounded-sm" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
+        <p className='py-6 cursor-pointer' onClick={toggleSignInForm}>{isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now"}</p>
+      </form>   
+    </div>
+  )
+}
+
+export default Login
