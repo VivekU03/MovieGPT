@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utills/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utills/userSlice';
-import { USER_AVATAR } from '../utills/constants';
+import { BG_URL, USER_AVATAR } from '../utills/constants';
 
 
 const Login = () => {
@@ -82,7 +82,7 @@ const Login = () => {
     <div>
       <Header />  
       <div className='absolute'>
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/274d310a-9543-4b32-87f3-147b372abc00/web/IN-en-20251201-TRIFECTA-perspective_baf6d3bc-eece-4a63-bcbb-e0a2f5d9d9ec_large.jpg" alt="" />
+        <img src={BG_URL} alt="bg_img" />
       </div> 
       <form onSubmit={(e) => e.preventDefault()} className="w-3/12 absolute my-30 p-10 left-0 right-0 mx-auto bg-black opacity-80 text-white">
         <h1 className='py-2 font-bold text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
