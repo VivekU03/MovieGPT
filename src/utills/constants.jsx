@@ -3,10 +3,10 @@ export const LOGO = "https://help.nflxext.com/helpcenter/OneTrust/oneTrust_produ
 export const USER_AVATAR = "src/assets/Netflix-avatar.png";
 
 export const API_OPTIONS = {
-  method: 'GET',
+  method: "GET",
   headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTY0ZDU4MjU3M2Y3MjlhMTJmN2U5ZThkNDliMzE0MyIsIm5iZiI6MTY3ODg5OTA0OS4xNTgwMDAyLCJzdWIiOiI2NDExZjc2OWZlNmMxODAwZjliZDQ0OWIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.a0u3a72DzpKcZI1j6wgaMh8yth-49iwwdZGH80fjKto'
+    accept: "application/json",
+    Authorization: "Bearer " + import.meta.env.VITE_TMDB_KEY,
   }
 };
 
@@ -19,3 +19,6 @@ export const SUPPORTED_LANGUAGES = [
   {identifier: "eng", name: "English"}, 
   {identifier: "hindi", name: "Hindi"}, 
   {identifier: "spanish", name: "Spanish"}]
+
+
+  export const GOOGLEGENAI_KEY = import.meta.env.VITE_GOOGLEGENAI_KEY;
