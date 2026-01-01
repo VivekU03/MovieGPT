@@ -1,6 +1,6 @@
-export const LOGO = "src/assets/NetflixGpt.png";
+export const LOGO = "src/assets/moviegpt.png";
 
-export const USER_AVATAR = "src/assets/Netflix-avatar.png";
+export const USER_AVATAR = "src/assets/avatar.png";
 
 export const API_OPTIONS = {
   method: "GET",
