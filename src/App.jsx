@@ -8,7 +8,7 @@ function App() {
 
   return (
     <Provider store={appStore}>
-      <div>
+      <div className="min-h-screen flex flex-col">
         <Body/>
         <Footer/>
       </div>

@@ -6,6 +6,8 @@ import { auth } from '../utills/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utills/userSlice';
 import { BG_URL, USER_AVATAR } from '../utills/constants';
+import { FaInfoCircle } from "react-icons/fa";
+
 
 
 const Login = () => {
@@ -91,8 +93,9 @@ const Login = () => {
         <input ref={password} type="password" placeholder="Password" className="p-3 my-3 w-full bg-gray-600 rounded-sm"/>
         <p className="text-red-500 font-bold py-2">{errorMessage}</p>
         <button className="p-2 my-3 w-full bg-red-600 rounded-sm" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
-        <p className='py-6 cursor-pointer' onClick={toggleSignInForm}>{isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now"}</p>
-      </form>   
+        <p className='py-6 cursor-pointer' onClick={toggleSignInForm}>{isSignInForm ? "New to MovieGPT? Sign Up Now" : "Already registered? Sign In Now"}</p>
+        <p className="flex text-xs"><FaInfoCircle className="text-lg mr-2"/>Demo project — credentials are for testing only</p>
+      </form>  
     </div>
   );
 };

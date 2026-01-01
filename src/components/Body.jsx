@@ -18,9 +18,9 @@ const Body = () => {
 
 
   return (
-    <div>
+    <main className="grow">
         <RouterProvider router={appRouter} />
-    </div>
+    </main>
   )
 }
 
