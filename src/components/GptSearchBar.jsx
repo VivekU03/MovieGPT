@@ -45,7 +45,7 @@ const GptSearchBar = () => {
 
     // for each movie I will search TMDC API
 
-    const promiseArray = gptMovies.map(movie => moviesSearchTMDB(movie));
+    const promiseArray = gptMovies.map((movie) => moviesSearchTMDB(movie));
 
     const ResultsOfTmdb = await Promise.all(promiseArray);
 
@@ -56,19 +56,19 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[12%] flex justify-center">
+    <div className="pt-[38%] md:pt-[12%] flex justify-center">
       <form
-        className="bg-black p-4 w-1/2 grid grid-cols-12"
+        className="bg-black w-full p-4 md:w-1/2 grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
-          className="bg-white p-2 rounded-sm col-span-10"
+          className="bg-white text-sm md:text-base p-2 col-span-9 rounded-sm md:col-span-10"
           type="text"
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button
-          className="p-2 ml-2 bg-red-700 text-white rounded-sm col-span-2"
+          className="text-sm md:text-base px-1 col-span-3 md:py-2 md:px-4 ml-2 bg-red-700 text-white rounded-sm md:col-span-2"
           onClick={handleGptSearch}
         >
           {lang[langKey].search}

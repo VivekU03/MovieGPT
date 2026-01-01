@@ -79,13 +79,13 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className='relative'>
       <Header />  
-      <div className='absolute'>
-        <img src={BG_URL} alt="bg_img" />
-      </div> 
-      <form onSubmit={(e) => e.preventDefault()} className="w-3/12 absolute my-30 p-10 left-0 right-0 mx-auto bg-black opacity-80 text-white">
-        <h1 className='py-2 font-bold text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
+      <div className='fixed'>
+        <img className="h-screen w-screen object-cover" src={BG_URL} alt="bg_img" />
+      </div>  
+      <form onSubmit={(e) => e.preventDefault()} className="w-full md:w-3/12 my-30 absolute p-10 left-0 right-0 mx-auto bg-black opacity-80 text-white">
+        <h1 className='py-2 font-bold text-2xl md:text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && <input ref={name} type="text" placeholder="Full Name" className="p-3 my-3 w-full bg-gray-600 rounded-sm"/>}
         <input ref={email} type="text" placeholder="Email Address" className="p-3 my-3 w-full bg-gray-600 rounded-sm" />
         <input ref={password} type="password" placeholder="Password" className="p-3 my-3 w-full bg-gray-600 rounded-sm"/>
@@ -94,7 +94,7 @@ const Login = () => {
         <p className='py-6 cursor-pointer' onClick={toggleSignInForm}>{isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now"}</p>
       </form>   
     </div>
-  )
-}
+  );
+};
 
 export default Login

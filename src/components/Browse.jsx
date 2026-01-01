@@ -1,8 +1,5 @@
-import { useEffect } from "react";
-import { API_OPTIONS } from "../utills/constants"
 import Header from "./Header"
-import { useDispatch, useSelector } from "react-redux";
-import { addNowPlayingMovies } from "../utills/moviesSlice";
+import { useSelector } from "react-redux";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import VideoBannerContainer from "./VideoBannerContainer";
 import MoviesContainer from "./MoviesContainer";
@@ -12,7 +9,7 @@ import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import GptSearchPage from "./GptSearchPage";
 
 const Browse = () => {
-  const showGptSearch = useSelector(store=> store.gpt.showGptSearch)
+  const showGptSearch = useSelector((store)=> store.gpt.showGptSearch);
 
   useNowPlayingMovies();
   usePopularMovies();
@@ -23,7 +20,8 @@ const Browse = () => {
     <div>
       <Header/>
       {
-        showGptSearch ? ( <GptSearchPage/> 
+        showGptSearch ? ( 
+        <GptSearchPage/> 
         ) : ( 
         <>
           <VideoBannerContainer/>
@@ -31,7 +29,7 @@ const Browse = () => {
         </> 
       )} 
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;

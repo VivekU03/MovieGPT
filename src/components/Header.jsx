@@ -7,11 +7,13 @@ import { addUser, removeUser } from "../utills/userSlice";
 import { LOGO, SUPPORTED_LANGUAGES } from "../utills/constants";
 import { toggleGptSearch } from "../utills/gptSlice";
 import { changeLanguage } from "../utills/configSlice";
+import { FaSignOutAlt } from "react-icons/fa";
+import { FaSistrix } from "react-icons/fa6";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const handleSignOut = () =>{
     signOut(auth).then(() => {
@@ -19,13 +21,15 @@ const Header = () => {
     }).catch((error) => {
         navigate("/error");
     });
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
   if (user) {
     const {uid, email, displayName, photoURL} = user;
-    dispatch(addUser({uid: uid, 
+    dispatch(
+      addUser({
+      uid: uid, 
       email: email, 
       displayName: displayName, 
       photoURL: photoURL,
@@ -41,32 +45,44 @@ const Header = () => {
 
   // Unsubscribe when component unmounts
   return () => unsubscribe();
-  }, [])
+  }, []);
 
   const handleGptSearch = () =>{
     dispatch(toggleGptSearch());
   };
 
   const handleLanguage = (e) =>{
-    dispatch(changeLanguage(e.target.value))
+    dispatch(changeLanguage(e.target.value));
   };
 
   return (
-    <div className="absolute px-8 py-2 bg-linear-to-b from-black z-30 w-full flex justify-between items-center">
-        <img className='w-44' src={LOGO} alt="logo" />
+    <div className="absolute px-5 md:px-8 py-2 bg-linear-to-b from-black z-30 w-full flex justify-between flex-col md:flex-row">
+        <img className="w-40 mx-auto md:mx-0 md:w-50" src={LOGO} alt="logo" />
         {user && (
-          <div className="flex">
-            {showGptSearch && (<select className="bg-gray-900 text-white p-2" onChange={handleLanguage}>
-              {SUPPORTED_LANGUAGES.map((lang => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option> 
+          <div className="flex justify-between items-center mt-4 md:mt-0">
+            {showGptSearch && (
+              <select className="bg-gray-900 text-white p-2 h-9 text-sm md:text-base" onChange={handleLanguage}>
+              {SUPPORTED_LANGUAGES.map((lang) =>(<option key={lang.identifier} value={lang.identifier}>{lang.name}</option> 
             ))}
             </select>
           )}
-            <button onClick={handleGptSearch} className="py-2 px-3 mx-3 bg-blue-500 text-white rounded-md cursor-pointer">{showGptSearch? "Home" : "GPT Search"}</button>
-          <img className="w-8 h-8 mx-2 " src={user?.photoURL} alt="user_icon" />
-          <button onClick={handleSignOut} className="text-white font-bold cursor-pointer">(Sign Out)</button>
-        </div>)}
+            <button onClick={handleGptSearch} className="py-1 flex items-center px-1 h-9 text-xs md:text-base md:py-2 md:px-3 mx-3 bg-blue-500 text-white rounded-md cursor-pointer">{showGptSearch ? (
+              "Home"
+            ) : (
+              <>
+                GPT Search
+                <FaSistrix className="ml-1" />
+              </>
+            )}
+          </button>
+          <img className="w-8 hidden md:block h-8 mx-2 " src={user?.photoURL} alt="user_icon" />
+          <button onClick={handleSignOut} className="text-white text-lg md:text-2xl font-bold cursor-pointer"><FaSignOutAlt/></button>
+        </div>
+        
+      )}
     </div>   
-  )
-}
+    
+  );
+};
 
 export default Header
