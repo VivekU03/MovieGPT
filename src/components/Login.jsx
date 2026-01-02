@@ -9,7 +9,6 @@ import { IMAGES } from '../utills/constants';
 import { FaInfoCircle } from "react-icons/fa";
 
 
-
 const Login = () => {
 
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -95,7 +94,7 @@ const Login = () => {
         <button className="p-2 my-3 w-full bg-red-600 rounded-sm" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
         <p className='py-6 cursor-pointer' onClick={toggleSignInForm}>{isSignInForm ? "New to MovieGPT? Sign Up Now" : "Already registered? Sign In Now"}</p>
         <p className="flex text-xs"><FaInfoCircle className="text-lg mr-2"/>Demo project — credentials are for testing only</p>
-      </form>  
+      </form> 
     </div>
   );
 };
