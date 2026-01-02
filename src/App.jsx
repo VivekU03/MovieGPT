@@ -10,10 +10,10 @@ function App() {
     <Provider store={appStore}>
       <div className="min-h-screen flex flex-col">
         <Body/>
-        <Footer/>
+        {location.pathname !== "/" && <Footer/>}
       </div>
     </Provider>
   );
 }
 
-export default App
+export default App;
