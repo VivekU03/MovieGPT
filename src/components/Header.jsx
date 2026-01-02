@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utills/userSlice";
-import { LOGO, SUPPORTED_LANGUAGES } from "../utills/constants";
+import { IMAGES, SUPPORTED_LANGUAGES } from "../utills/constants";
 import { toggleGptSearch } from "../utills/gptSlice";
 import { changeLanguage } from "../utills/configSlice";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -57,7 +57,7 @@ const Header = () => {
 
   return (
     <div className="absolute px-5 md:px-8 py-2 bg-linear-to-b from-black z-30 w-full flex justify-between flex-col md:flex-row">
-        <img className="w-40 mx-auto md:mx-0 md:w-50" src={LOGO} alt="logo" />
+        <img className="w-40 mx-auto md:mx-0 md:w-50" src={IMAGES.LOGO} alt="logo" />
         {user && (
           <div className="flex justify-between items-center mt-4 md:mt-0">
             {showGptSearch && (

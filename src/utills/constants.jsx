@@ -1,6 +1,13 @@
-export const LOGO = "src/assets/moviegpt.png";
+import logo from "../assets/moviegpt.png";
+import avatar from "../assets/avatar.png";
+import bgImg from "../assets/bg-img.png";
 
-export const USER_AVATAR = "src/assets/avatar.png";
+export const IMAGES = {
+  LOGO: logo,
+  USER_AVATAR: avatar,
+  BG_URL: bgImg,
+}
+
 
 export const API_OPTIONS = {
   method: "GET",
@@ -11,8 +18,6 @@ export const API_OPTIONS = {
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
-
-export const BG_URL = "src/assets/bg-img.png";
 
 
 export const SUPPORTED_LANGUAGES = [

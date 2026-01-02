@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utills/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utills/userSlice';
-import { BG_URL, USER_AVATAR } from '../utills/constants';
+import { IMAGES } from '../utills/constants';
 import { FaInfoCircle } from "react-icons/fa";
 
 
@@ -37,7 +37,7 @@ const Login = () => {
     // Signed up 
     const user = userCredential.user;
         updateProfile(user, {
-      displayName: name.current.value, photoURL: USER_AVATAR
+      displayName: name.current.value, photoURL: IMAGES.USER_AVATAR
     }).then(() => {
       // Profile updated!
       const {uid, email, displayName, photoURL} = auth.currentUser;
@@ -84,7 +84,7 @@ const Login = () => {
     <div className='relative'>
       <Header />  
       <div className='fixed'>
-        <img className="h-screen w-screen object-cover" src={BG_URL} alt="bg_img" />
+        <img className="h-screen w-screen object-cover" src={IMAGES.BG_URL} alt="bg_img" />
       </div>  
       <form onSubmit={(e) => e.preventDefault()} className="w-full md:w-3/12 my-30 absolute p-10 left-0 right-0 mx-auto bg-black opacity-80 text-white">
         <h1 className='py-2 font-bold text-2xl md:text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
