@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+
+
+/* Desktop scrollbar customization */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  /* ::-webkit-scrollbar-track {
+    background: #fff;
+  } */
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 136, 136, 0.473);
+    border-radius: 10px;
+  }
+}
+
