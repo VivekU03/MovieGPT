@@ -85,7 +85,8 @@ const Login = () => {
       <div className='fixed'>
         <img className="h-screen w-screen object-cover" src={IMAGES.BG_URL} alt="bg_img" />
       </div>  
-      <form onSubmit={(e) => e.preventDefault()} className="w-full md:w-3/12 my-30 absolute p-10 left-0 right-0 mx-auto bg-black opacity-80 text-white">
+      <div className="h-screen flex items-center">
+        <form onSubmit={(e) => e.preventDefault()} className="w-full md:w-3/12 absolute p-10 left-0 right-0 mx-auto bg-black opacity-80 text-white">
         <h1 className='py-2 font-bold text-2xl md:text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && <input ref={name} type="text" placeholder="Full Name" className="p-3 my-3 w-full bg-gray-600 rounded-sm"/>}
         <input ref={email} type="text" placeholder="Email Address" className="p-3 my-3 w-full bg-gray-600 rounded-sm" />
@@ -94,7 +95,8 @@ const Login = () => {
         <button className="p-2 my-3 w-full bg-red-600 rounded-sm" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
         <p className='py-6 cursor-pointer' onClick={toggleSignInForm}>{isSignInForm ? "New to MovieGPT? Sign Up Now" : "Already registered? Sign In Now"}</p>
         <p className="flex text-xs"><FaInfoCircle className="text-lg mr-2"/>Demo project — credentials are for testing only</p>
-      </form> 
+      </form>
+      </div> 
     </div>
   );
 };
